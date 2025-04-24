@@ -1,0 +1,3 @@
+2025-04-25 03:04:52 [http-nio-8080-exec-2] INFO  c.s.j.s.i.AuthenticationServiceImpl - Attempting login for user: khayal1
+2025-04-25 03:04:53 [http-nio-8080-exec-2] INFO  c.s.j.s.i.AuthenticationServiceImpl - Updated existing token for user: khayal1
+2025-04-25 03:05:42 [http-nio-8080-exec-4] INFO  c.s.j.s.i.AuthenticationServiceImpl - Registering new user: aykhan
