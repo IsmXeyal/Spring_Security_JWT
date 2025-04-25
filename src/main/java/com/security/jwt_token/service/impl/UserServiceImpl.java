@@ -10,11 +10,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -24,17 +27,23 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        logger.info("Loading user by username: {}", username);
         Optional<User> user = userRepository.findByUsername(username);
-        return user.orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+        return user.orElseThrow(() -> {
+            logger.warn("User not found with username: {}", username);
+            return new UsernameNotFoundException("User not found with username: " + username);
+        });
     }
 
     @Override
     public Optional<User> getByUsername(String username) {
+        logger.debug("Retrieving user by username: {}", username);
         return userRepository.findByUsername(username);
     }
 
     @Override
     public User createUser(UserRegisterDto request) {
+        logger.info("Attempting to register user: {}", request.getUsername());
         // Check if the username or email already exists
         if (userRepository.existsByUsername(request.getUsername()) || userRepository.existsByEmail(request.getEmail())) {
             StringBuilder message = new StringBuilder("Registration failed: ");
@@ -48,6 +57,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             if (emailExists) {
                 message.append("Email '").append(request.getEmail()).append("' already exists.");
             }
+            logger.warn(message.toString().trim());
             throw new UserAlreadyExistsException(message.toString().trim());
         }
 
@@ -63,6 +73,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .accountNonLocked(true)
                 .build();
 
-        return userRepository.save(newUser);
+        User savedUser = userRepository.save(newUser);
+        logger.info("User registered successfully: {}", savedUser.getUsername());
+
+        return savedUser;
     }
 }

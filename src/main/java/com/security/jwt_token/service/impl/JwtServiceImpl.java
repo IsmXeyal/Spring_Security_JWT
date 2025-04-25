@@ -7,19 +7,21 @@ import com.security.jwt_token.service.JwtService;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import io.jsonwebtoken.*;
 import java.util.function.Function;
-
 import java.security.Key;
 import java.util.*;
 
 @Service
 @RequiredArgsConstructor
 public class JwtServiceImpl implements JwtService {
+    private static final Logger logger = LoggerFactory.getLogger(JwtServiceImpl.class);
     private final TokenRepository tokenRepository;
 
     @Value("${token.signing.key}")
@@ -41,11 +43,13 @@ public class JwtServiceImpl implements JwtService {
 
     @Override
     public String generateToken(UserDetails userDetails) {
+        logger.info("Generating access token for user '{}'", userDetails.getUsername());
         return generateToken(userDetails, accessTokenExpiration, jwtSigningKey);
     }
 
     @Override
     public String generateRefreshToken(UserDetails userDetails) {
+        logger.info("Generating refresh token for user '{}'", userDetails.getUsername());
         return generateToken(userDetails, refreshTokenExpiration, jwtRefreshSigningKey);
     }
 
@@ -53,7 +57,10 @@ public class JwtServiceImpl implements JwtService {
     public boolean isTokenValid(String token, UserDetails userDetails) {
         String userName = extractUserName(token);
         Token tokenFromDb = tokenRepository.findByToken(token)
-                .orElseThrow(() -> new TokenNotFoundException("Token is invalid: " + token));
+                .orElseThrow(() -> {
+                    logger.warn("Token not found in DB: {}", token);
+                    return new TokenNotFoundException("Token is invalid: " + token);
+                });
         return tokenFromDb.getIsActive() && userName.equals(userDetails.getUsername()) && !isTokenExpired(token);
     }
 

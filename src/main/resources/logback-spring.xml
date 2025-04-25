@@ -33,7 +33,12 @@
     <logger name="com.security.jwt_token.service.impl.AuthenticationServiceImpl" level="INFO" additivity="false">
         <appender-ref ref="AuthLogs"/>
     </logger>
-
+    <logger name="com.security.jwt_token.service.impl.UserServiceImpl" level="INFO" additivity="false">
+        <appender-ref ref="AuthLogs"/>
+    </logger>
+    <logger name="com.security.jwt_token.service.impl.JwtServiceImpl" level="INFO" additivity="false">
+        <appender-ref ref="AuthLogs"/>
+    </logger>
     <!-- Root logger -->
     <root level="INFO">
         <appender-ref ref="Console"/>
