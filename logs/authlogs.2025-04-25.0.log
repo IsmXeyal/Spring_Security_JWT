@@ -1,0 +1,33 @@
+2025-04-25 10:10:44 [http-nio-8080-exec-1] INFO  c.s.j.s.i.AuthenticationServiceImpl - Registering new user: aykhan
+2025-04-25 10:10:44 [http-nio-8080-exec-1] INFO  c.s.j.service.impl.UserServiceImpl - Attempting to register user: aykhan
+2025-04-25 10:10:45 [http-nio-8080-exec-1] INFO  c.s.j.service.impl.UserServiceImpl - User registered successfully: aykhan
+2025-04-25 10:10:45 [http-nio-8080-exec-1] INFO  c.s.j.service.impl.JwtServiceImpl - Generating access token for user 'aykhan'
+2025-04-25 10:10:45 [http-nio-8080-exec-1] INFO  c.s.j.service.impl.JwtServiceImpl - Generating refresh token for user 'aykhan'
+2025-04-25 10:10:45 [http-nio-8080-exec-1] INFO  c.s.j.s.i.AuthenticationServiceImpl - Generated and saved tokens for new user: aykhan
+2025-04-25 10:11:18 [http-nio-8080-exec-3] INFO  c.s.j.s.i.AuthenticationServiceImpl - Registering new user: aykhan
+2025-04-25 10:11:18 [http-nio-8080-exec-3] INFO  c.s.j.service.impl.UserServiceImpl - Attempting to register user: aykhan
+2025-04-25 10:11:18 [http-nio-8080-exec-3] WARN  c.s.j.service.impl.UserServiceImpl - Registration failed: Username 'aykhan' already exists. Email 'aykhan@gmail.com' already exists.
+2025-04-25 10:11:55 [http-nio-8080-exec-4] INFO  c.s.j.s.i.AuthenticationServiceImpl - Registering new user: khayal
+2025-04-25 10:11:55 [http-nio-8080-exec-4] INFO  c.s.j.service.impl.UserServiceImpl - Attempting to register user: khayal
+2025-04-25 10:11:56 [http-nio-8080-exec-4] INFO  c.s.j.service.impl.UserServiceImpl - User registered successfully: khayal
+2025-04-25 10:11:56 [http-nio-8080-exec-4] INFO  c.s.j.service.impl.JwtServiceImpl - Generating access token for user 'khayal'
+2025-04-25 10:11:56 [http-nio-8080-exec-4] INFO  c.s.j.service.impl.JwtServiceImpl - Generating refresh token for user 'khayal'
+2025-04-25 10:11:56 [http-nio-8080-exec-4] INFO  c.s.j.s.i.AuthenticationServiceImpl - Generated and saved tokens for new user: khayal
+2025-04-25 10:12:21 [http-nio-8080-exec-5] INFO  c.s.j.s.i.AuthenticationServiceImpl - Attempting login for user: khayal
+2025-04-25 10:12:21 [http-nio-8080-exec-5] INFO  c.s.j.service.impl.UserServiceImpl - Loading user by username: khayal
+2025-04-25 10:12:21 [http-nio-8080-exec-5] INFO  c.s.j.service.impl.JwtServiceImpl - Generating access token for user 'khayal'
+2025-04-25 10:12:21 [http-nio-8080-exec-5] INFO  c.s.j.service.impl.JwtServiceImpl - Generating refresh token for user 'khayal'
+2025-04-25 10:12:22 [http-nio-8080-exec-5] INFO  c.s.j.s.i.AuthenticationServiceImpl - Updated existing token for user: khayal
+2025-04-25 10:13:23 [http-nio-8080-exec-8] INFO  c.s.j.service.impl.UserServiceImpl - Loading user by username: khayal
+2025-04-25 10:13:40 [http-nio-8080-exec-9] INFO  c.s.j.s.i.AuthenticationServiceImpl - Attempting login for user: aykhan
+2025-04-25 10:13:40 [http-nio-8080-exec-9] INFO  c.s.j.service.impl.UserServiceImpl - Loading user by username: aykhan
+2025-04-25 10:13:40 [http-nio-8080-exec-9] INFO  c.s.j.service.impl.JwtServiceImpl - Generating access token for user 'aykhan'
+2025-04-25 10:13:40 [http-nio-8080-exec-9] INFO  c.s.j.service.impl.JwtServiceImpl - Generating refresh token for user 'aykhan'
+2025-04-25 10:13:40 [http-nio-8080-exec-9] INFO  c.s.j.s.i.AuthenticationServiceImpl - Updated existing token for user: aykhan
+2025-04-25 10:13:57 [http-nio-8080-exec-10] INFO  c.s.j.service.impl.UserServiceImpl - Loading user by username: aykhan
+2025-04-25 10:14:07 [http-nio-8080-exec-2] INFO  c.s.j.service.impl.UserServiceImpl - Loading user by username: aykhan
+2025-04-25 10:14:33 [http-nio-8080-exec-1] INFO  c.s.j.s.i.AuthenticationServiceImpl - Refreshing token using refreshToken: eyJhbGciOiJIUzI1NiJ9.eyJhdXRob3JpdGllcyI6WyJST0xFX0FETUlOIl0sInN1YiI6ImF5a2hhbiIsImlhdCI6MTc0NTU2MTYyMCwiZXhwIjoxNzQ1NTYyMjIwfQ.5IoB_U-AGiHML862oQe9RSgD2MqVpDMXV2dtB_N8TUI
+2025-04-25 10:14:34 [http-nio-8080-exec-1] INFO  c.s.j.service.impl.JwtServiceImpl - Generating access token for user 'aykhan'
+2025-04-25 10:14:34 [http-nio-8080-exec-1] INFO  c.s.j.service.impl.JwtServiceImpl - Generating refresh token for user 'aykhan'
+2025-04-25 10:14:34 [http-nio-8080-exec-1] INFO  c.s.j.s.i.AuthenticationServiceImpl - Old token deactivated for user: aykhan
+2025-04-25 10:14:34 [http-nio-8080-exec-1] INFO  c.s.j.s.i.AuthenticationServiceImpl - Updated token for user: aykhan
