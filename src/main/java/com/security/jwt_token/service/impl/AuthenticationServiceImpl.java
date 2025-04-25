@@ -43,14 +43,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Override
     public JwtAuthenticationResponseDto login(UserLoginDto request) {
         logger.info("Attempting login for user: {}", request.getUsername());
-
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
-        );
+        try {
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword())
+            );
+        } catch (Exception e) {
+            logger.warn("Login failed: Invalid credentials for user {}", request.getUsername());
+            throw new InvalidCredentialsException();
+        }
 
         var user = userRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> {
-                    logger.warn("Login failed: Invalid credentials for user {}", request.getUsername());
+                    logger.warn("Login failed: User not found {}", request.getUsername());
                     return new InvalidCredentialsException();
                 });
 
